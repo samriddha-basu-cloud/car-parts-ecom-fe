@@ -9,6 +9,8 @@ import Testimonial from './components/Testimonial';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Register from './components/Register';
+import SearchForm from './components/SearchForm';
+import DiscountBanner from './components/DiscountBanner';
 import './App.css';
 
 const App = () => {
@@ -19,7 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={
             <>
-              <HeroSection />
+              <SearchForm />
               <SearchByCategory />
               <WhyChoose />
               <BrandsSlider />
