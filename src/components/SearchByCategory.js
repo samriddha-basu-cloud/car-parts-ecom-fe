@@ -1,6 +1,13 @@
 import React from 'react';
+import { FaCog, FaCarBattery, FaBolt, FaTools, FaToolbox } from 'react-icons/fa';
 
-const categories = ["Engine Parts", "Brakes", "Suspension", "Exhaust", "Electrical"];
+const categories = [
+  { name: "Engine Parts", icon: <FaCog /> },
+  { name: "Brakes", icon: <FaCarBattery /> },
+  { name: "Suspension", icon: <FaBolt /> },
+  { name: "Exhaust", icon: <FaTools /> },  // Changed icon here
+  { name: "Electrical", icon: <FaToolbox /> }
+];
 
 const SearchByCategory = () => {
   return (
@@ -9,10 +16,13 @@ const SearchByCategory = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {categories.map(category => (
           <div 
-            key={category} 
-            className="p-6 bg-paleBlue rounded-lg text-center shadow-md hover:bg-lightBlue transition duration-300"
+            key={category.name} 
+            className="p-6 bg-paleBlue rounded-lg text-center shadow-md hover:bg-lightBlue transition duration-300 flex flex-col items-center justify-center"
           >
-            <span className="text-xl text-blue font-semibold">{category}</span>
+            <div className="text-5xl text-blue mb-4">
+              {category.icon}
+            </div>
+            <span className="text-xl text-blue font-semibold">{category.name}</span>
           </div>
         ))}
       </div>

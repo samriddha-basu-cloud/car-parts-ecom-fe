@@ -4,7 +4,7 @@ import UserMenu from './UserMenu';
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between p-5 bg-[#222222] text-[#FFFFFF] relative">
+    <nav className="flex items-center justify-between p-5 bg-gradient-to-b from-black to-transparent text-[#FFFFFF] absolute top-0 left-0 w-full z-10">
       <div className="text-2xl font-bold">CarParts</div>
       <div className="space-x-6">
         <Link to="/" className="hover:text-[#BBCDE5] transition-colors duration-300">Home</Link>
@@ -13,10 +13,6 @@ const Navbar = () => {
         <a href="#contact" className="hover:text-[#BBCDE5] transition-colors duration-300">Contact</a>
       </div>
       <div className="flex space-x-4 items-center">
-        <div className="flex">
-          <input type="text" placeholder="Search..." className="p-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#1C5D99]" />
-          <button className="bg-[#1C5D99] hover:bg-[#639FAB] focus:outline-none focus:ring-2 focus:ring-[#1C5D99] p-2 rounded-br-md rounded-tr-md text-[#FFFFFF] transition-colors duration-300">Search</button>
-        </div>
         <UserMenu />
       </div>
     </nav>

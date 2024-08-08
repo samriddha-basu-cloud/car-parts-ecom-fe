@@ -17,11 +17,13 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <div className="relative">
+          <Navbar />
+          <SearchForm />
+        </div>
         <Routes>
           <Route path="/" element={
             <>
-              <SearchForm />
               <SearchByCategory />
               <WhyChoose />
               <BrandsSlider />
