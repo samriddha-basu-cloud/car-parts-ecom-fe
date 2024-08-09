@@ -21,19 +21,19 @@ const reasons = [
 
 const WhyChoose = () => {
   return (
-    <div className="p-10 bg-[#F8FAFC]">
-      <h2 className="text-3xl font-bold mb-8 text-[#222222]">Why Choose Aftermarket Products?</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-b from-white to-paleBlue p-6">
+      <h2 className="text-4xl font-bold mb-8 text-blue text-center">Why Choose Aftermarket Products?</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {reasons.map(reason => (
           <div 
             key={reason.title} 
-            className="p-8 bg-[#FFFFFF] rounded-lg shadow-lg hover:bg-[#BBCDE5] transition duration-300 flex flex-col items-center text-center"
+            className="aspect-square bg-white rounded-xl text-center shadow-lg hover:shadow-xl transition duration-300 flex flex-col items-center justify-center cursor-pointer hover:bg-blue group p-6"
           >
-            <div className="text-5xl text-[#1C5D99] mb-4">
+            <div className="text-5xl mb-4 text-blue transition duration-300 group-hover:text-white group-hover:scale-110">
               {reason.icon}
             </div>
-            <h3 className="text-xl font-semibold mb-4 text-[#1C5D99]">{reason.title}</h3>
-            <p className="text-[#222222]">{reason.description}</p>
+            <h3 className="text-xl font-semibold mb-4 text-gray-700 group-hover:text-white transition duration-300">{reason.title}</h3>
+            <p className="text-sm text-gray-600 group-hover:text-white transition duration-300">{reason.description}</p>
           </div>
         ))}
       </div>

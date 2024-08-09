@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Element } from 'react-scroll';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import SearchByCategory from './components/SearchByCategory';
@@ -11,7 +12,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import SearchForm from './components/SearchForm';
 import DiscountBanner from './components/DiscountBanner';
-import './App.css';
+import AboutCompany from './components/AboutCompany';
 
 const App = () => {
   return (
@@ -24,10 +25,21 @@ const App = () => {
         <Routes>
           <Route path="/" element={
             <>
-              <SearchByCategory />
-              <WhyChoose />
-              <BrandsSlider />
-              <Testimonial />
+              <Element name="categories">
+                <SearchByCategory />
+              </Element>
+              <Element name="whychoose">
+                <WhyChoose />
+              </Element>
+              <Element name="brands">
+                <BrandsSlider />
+              </Element>
+              <Element name="about">
+                <AboutCompany />
+              </Element>
+              <Element name="testimonials">
+                <Testimonial />
+              </Element>
             </>
           } />
           <Route path="/login" element={<Login />} />

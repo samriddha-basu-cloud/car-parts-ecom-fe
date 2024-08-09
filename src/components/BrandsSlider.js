@@ -21,20 +21,39 @@ const BrandsSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 1000,
+    arrows: false, // Remove the arrows
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+        }
+      }
+    ]
   };
 
   return (
-    <div className="p-10 bg-[#F8FAFC]">
-      <h2 className="text-3xl font-bold mb-8 text-[#222222]">Our Trusted Brands</h2>
-      <Slider {...settings}>
-        {brands.map((brand, index) => (
-          <div key={index} className="p-5">
-            <div className="bg-[#FFFFFF] p-6 rounded-lg shadow-md hover:bg-[#BBCDE5] transition duration-300">
-              <img src={brand} alt={`Brand ${index + 1}`} className="h-20 mx-auto" />
+    <div className="flex flex-col justify-center items-center bg-gradient-to-b from-paleBlue to-white py-6">
+      <h2 className="text-4xl font-bold mb-8 text-blue text-center">Our Trusted Brands</h2>
+      <div className="w-full">
+        <Slider {...settings}>
+          {brands.map((brand, index) => (
+            <div key={index} className="flex items-center justify-center">
+              <img 
+                src={brand} 
+                alt={`Brand ${index + 1}`} 
+                className="h-20 mx-auto transition duration-300"
+              />
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };

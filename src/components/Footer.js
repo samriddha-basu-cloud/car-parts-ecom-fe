@@ -3,39 +3,51 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#222222] text-[#FFFFFF] py-12 px-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div>
-          <h3 className="font-bold text-xl mb-4">CarParts</h3>
-          <p>Your one-stop shop for quality car parts.</p>
+    <footer className="bg-blue text-white py-12 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="text-center md:text-left">
+            <h3 className="font-bold text-2xl mb-4">CarParts</h3>
+            <p className="text-paleBlue">Your one-stop shop for quality car parts.</p>
+          </div>
+          <div className="text-center md:text-left">
+            <h3 className="font-bold text-2xl mb-4">Useful Links</h3>
+            <ul>
+              {['Home', 'Categories', 'About', 'Contact'].map((link) => (
+                <li key={link}>
+                  <a 
+                    href={`#${link.toLowerCase()}`} 
+                    className="hover:text-paleBlue transition-colors duration-300 block mb-2 text-sm"
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="text-center md:text-left">
+            <h3 className="font-bold text-2xl mb-4">Contact Us</h3>
+            {[
+              { icon: <FaEnvelope />, content: 'info@carparts.com', href: 'mailto:info@carparts.com' },
+              { icon: <FaPhone />, content: '123-456-7890', href: 'tel:123-456-7890' },
+              { icon: <FaMapMarkerAlt />, content: '123 CarParts Street, AutoCity, CA' }
+            ].map((item, index) => (
+              <p key={index} className="flex items-center justify-center md:justify-start mb-2">
+                <span className="text-paleBlue mr-2">{item.icon}</span>
+                {item.href ? (
+                  <a href={item.href} className="hover:text-paleBlue transition-colors duration-300 text-sm">
+                    {item.content}
+                  </a>
+                ) : (
+                  <span className="text-sm">{item.content}</span>
+                )}
+              </p>
+            ))}
+          </div>
         </div>
-        <div>
-          <h3 className="font-bold text-xl mb-4">Useful Links</h3>
-          <ul>
-            <li><a href="#home" className="hover:text-[#BBCDE5] transition-colors duration-300 block mb-2">Home</a></li>
-            <li><a href="#categories" className="hover:text-[#BBCDE5] transition-colors duration-300 block mb-2">Categories</a></li>
-            <li><a href="#about" className="hover:text-[#BBCDE5] transition-colors duration-300 block mb-2">About</a></li>
-            <li><a href="#contact" className="hover:text-[#BBCDE5] transition-colors duration-300 block mb-2">Contact</a></li>
-          </ul>
+        <div className="text-center mt-12 text-paleBlue text-sm">
+          &copy; 2024 CarParts | Designed by Your Name
         </div>
-        <div>
-          <h3 className="font-bold text-xl mb-4">Contact Us</h3>
-          <p className="flex items-center mb-2">
-            <FaEnvelope className="mr-2" /> 
-            <a href="mailto:info@carparts.com" className="hover:text-[#BBCDE5] transition-colors duration-300">info@carparts.com</a>
-          </p>
-          <p className="flex items-center mb-2">
-            <FaPhone className="mr-2" /> 
-            <a href="tel:123-456-7890" className="hover:text-[#BBCDE5] transition-colors duration-300">123-456-7890</a>
-          </p>
-          <p className="flex items-center">
-            <FaMapMarkerAlt className="mr-2" /> 
-            123 CarParts Street, AutoCity, CA
-          </p>
-        </div>
-      </div>
-      <div className="text-center mt-12 text-[#BBCDE5]">
-        &copy; 2024 CarParts | Designed by Your Name
       </div>
     </footer>
   );

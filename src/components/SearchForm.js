@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaCar, FaCalendarAlt, FaWrench } from 'react-icons/fa';
+import { ArrowUp } from 'lucide-react';
 import bg1 from '../assets/bg1.webp';
 import bg2 from '../assets/bg2.jpg';
 import bg3 from '../assets/bg3.avif';
@@ -23,55 +24,45 @@ const SearchForm = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
         style={{ backgroundImage: `url(${backgroundImages[currentImageIndex]})`, opacity: 1 }}
       />
-      <div className="relative z-10 bg-black/40 p-8 shadow-2xl h-full w-full flex flex-col justify-center">
-        <h2 className="text-4xl font-bold mb-8 text-paleBlue text-center">Find Your Next Vehicle</h2>
-        <form className="flex flex-wrap gap-8">
-          <div className="flex-1 min-w-[250px]">
-            <label className="block text-paleBlue font-medium mb-2" htmlFor="car-maker">Car Maker</label>
-            <div className="relative">
-              <FaCar className="absolute top-1/2 transform -translate-y-1/2 left-4 text-[#666666]" />
-              <select id="car-maker" className="w-full p-4 pl-12 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue focus:border-blue">
-                <option>Select Car Maker</option>
-                {/* Add more options as needed */}
-              </select>
-            </div>
-          </div>
-          <div className="flex-1 min-w-[250px]">
-            <label className="block text-paleBlue font-medium mb-2" htmlFor="model-line">Model Line</label>
-            <div className="relative">
-              <FaCar className="absolute top-1/2 transform -translate-y-1/2 left-4 text-[#666666]" />
-              <select id="model-line" className="w-full p-4 pl-12 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue focus:border-blue">
-                <option>Select Model Line</option>
-                {/* Add more options as needed */}
-              </select>
-            </div>
-          </div>
-          <div className="flex-1 min-w-[250px]">
-            <label className="block text-paleBlue font-medium mb-2" htmlFor="year">Year</label>
-            <div className="relative">
-              <FaCalendarAlt className="absolute top-1/2 transform -translate-y-1/2 left-4 text-[#666666]" />
-              <select id="year" className="w-full p-4 pl-12 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue focus:border-blue">
-                <option>Select Year</option>
-                {/* Add more options as needed */}
-              </select>
-            </div>
-          </div>
-          <div className="flex-1 min-w-[250px]">
-            <label className="block text-paleBlue font-medium mb-2" htmlFor="modification">Modification</label>
-            <div className="relative">
-              <FaWrench className="absolute top-1/2 transform -translate-y-1/2 left-4 text-[#666666]" />
-              <select id="modification" className="w-full p-4 pl-12 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue focus:border-blue">
-                <option>Select Modification</option>
-                {/* Add more options as needed */}
-              </select>
-            </div>
-          </div>
-          <div className="flex items-end min-w-[250px]">
-            <button type="submit" className="w-full bg-blue hover:bg-lightBlue text-white p-4 rounded-md transition-colors duration-300 shadow-md">
+      <div className="relative z-10 bg-black/40 p-8 shadow-2xl h-full w-full flex flex-col justify-center items-center">
+        <div className="bg-white/80 rounded-2xl p-8 shadow-lg backdrop-blur-sm max-w-7xl w-full">
+          <h2 className="text-4xl font-bold mb-8 text-blue text-center">Find Your Vehicle</h2>
+          <form className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { label: 'Car Maker', icon: <FaCar /> },
+              { label: 'Model Line', icon: <FaCar /> },
+              { label: 'Year', icon: <FaCalendarAlt /> },
+              { label: 'Modification', icon: <FaWrench /> }
+            ].map(({ label, icon }, index) => (
+              <div key={index} className="w-full">
+                <label className="block text-gray-700 font-medium mb-2" htmlFor={label.toLowerCase().replace(' ', '-')}>
+                  {label}
+                </label>
+                <div className="relative">
+                  <div className="absolute top-1/2 transform -translate-y-1/2 left-4 text-gray-500">
+                    {icon}
+                  </div>
+                  <select
+                    id={label.toLowerCase().replace(' ', '-')}
+                    className="w-full p-4 pl-12 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue focus:border-blue shadow-md hover:bg-gray-50 transition-colors duration-300"
+                  >
+                    <option>Select {label}</option>
+                    {/* Add more options as needed */}
+                  </select>
+                </div>
+              </div>
+            ))}
+          </form>
+          <div className="mt-8 flex justify-center">
+            <button 
+              type="submit" 
+              className="bg-blue/80 text-white px-8 py-3 rounded-full flex items-center hover:bg-blue transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-lg font-semibold"
+            >
               Search
+              <ArrowUp className="ml-2 transform rotate-90" />
             </button>
           </div>
-        </form>
+        </div>
         <DiscountBanner />
       </div>
     </div>
